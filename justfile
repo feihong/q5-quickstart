@@ -1,2 +1,2 @@
 serve:
-    bun run --hot serve.ts
+    bun run --hot serve.tsx
