@@ -5,8 +5,11 @@ class Walker {
     }
 
     update() {
-        this.x += random([-1, 1])
-        this.y += random([-1, 1])
+        if (random([true, false])) {
+            this.x += random([-1, 1])
+        } else {
+            this.y += random([-1, 1])
+        }
     }
 
     draw() {
@@ -15,7 +18,7 @@ class Walker {
 }
 
 function setup() {
-    const canvas = createCanvas(600, 400)
+    createCanvas(640, 240)
     background(220)
 
     w = new Walker(width, height)
