@@ -3,6 +3,7 @@ import { serveStatic } from 'hono/bun'
 
 const app = new Hono()
 
+app.use('/static/*', serveStatic({ root: './' }))
 app.use('/examples/*', serveStatic({ root: './' }))
 
 const examples = [
@@ -67,6 +68,8 @@ app.get('/e/:path', async (c) => {
       <meta>
         <title> {e.title} </title>
         {style}
+        <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js" />
+        <script src="/static/helpers.js" />
         {deps.map(u => <script src={u}></script>)}
       </meta>
       <body>

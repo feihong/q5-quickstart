@@ -1,3 +1,10 @@
+beforeCanvas(`
+<button onclick="update('random')">Totally random</button>
+<button onclick="update('perlinBigOffset')">Perlin big offsets</button>
+<button onclick="update('perlin')">Perlin</button>
+`)
+
+
 mode = 'random'
 
 function totallyRandom() {
@@ -79,11 +86,3 @@ function update(newMode) {
   mode = newMode
   redraw()
 }
-
-const div = document.createElement('div')
-document.querySelector('main').appendChild(div)
-div.innerHTML = `
-<button onclick="update('random')">Totally random</button>
-<button onclick="update('perlinBigOffset')">Perlin big offsets</button>
-<button onclick="update('perlin')">Perlin</button>
-`
