@@ -14,33 +14,23 @@ const examples = [
   {
     path: 'perlin-walker',
     title: 'Perlin noise random walker',
-    deps: 'p5', // p5's noise function generates values that look more natural
   },
   {
     path: 'random-pixels',
     title: 'Each pixel is a random grayscale value',
   },
+  {
+    path: 'vector',
+    title: 'Draw a vector',
+  },
 ]
-
-const css = `
-  html, body { margin: 0; padding: 0; }
-  canvas { border: 1px solid lightgray; }
-  main {
-    max-width: 70ch;
-    padding: 3em 1em;
-    margin: auto;
-    line-height: 1.75;
-    font-size: 1.25em;
-  }`
-
-const style = <style dangerouslySetInnerHTML={{ __html: css }} />
 
 app.get('/', async (c) => {
   return c.html(
     <html>
       <meta>
         <title>q5.js Quickstart</title>
-        {style}
+        <link rel="stylesheet" href="/static/styles.css" />
       </meta>
       <body>
         <main>
@@ -54,11 +44,13 @@ app.get('/', async (c) => {
 })
 
 const dependencyMap: Record<string, string> = {
-  q5: 'https://q5js.org/q5.js',
-  p5: 'https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js',
+  learn: 'https://cdn.jsdelivr.net/gh/StriveMath/p5.learn.js/src/p5.learn.js',
 }
 
 app.get('/e/:path', async (c) => {
+  const q5 = c.req.query('q5')
+  const drawingLib = q5 === '1' ? 'https://q5js.org/q5.js' : 'https://cdn.jsdelivr.net/npm/p5/lib/p5.min.js'
+
   const results = examples.filter(e => e.path === c.req.param('path'))
   const e = results[0] || { path: '', title: 'Not found' }
   const deps = (e.deps || 'p5').split(' ').map(d => dependencyMap[d] || '')
@@ -67,13 +59,15 @@ app.get('/e/:path', async (c) => {
     <html>
       <meta>
         <title> {e.title} </title>
-        {style}
+        <link rel="stylesheet" href="/static/styles.css" />
         <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js" />
         <script src="/static/helpers.js" />
-        {deps.map(u => <script src={u}></script>)}
+        <script src={drawingLib} />
+        {deps.map(src => <script src={src} />)}
       </meta>
       <body>
         <main>
+          <button class="drawing-lib-button">-</button>
           <h1> {e.title} </h1>
           <script src={`/examples/${e.path}.js`}></script>
         </main>

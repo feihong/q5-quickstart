@@ -1,3 +1,7 @@
+beforeCanvas(`
+p5 version has more natural motion, while q5 version is more "artistic"
+`)
+
 class Walker {
   constructor(w, h) {
     this.tx = 0

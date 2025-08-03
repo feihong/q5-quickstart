@@ -24,3 +24,11 @@ function afterCanvas(markdown) {
     parent.insertBefore(makeDiv(markdown), canvas.nextSibling)
   })
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(document.location.search)
+  const drawingLibBtn = document.querySelector('button.drawing-lib-button')
+  const isQ5 = params.get('q5') === '1'
+  drawingLibBtn.textContent = isQ5 ? 'q5' : 'p5'
+  drawingLibBtn.onclick = () => document.location.search = `?q5=${!isQ5 + 0}`
+})

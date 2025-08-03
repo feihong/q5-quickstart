@@ -1,0 +1,20 @@
+html, body { margin: 0; padding: 0; }
+
+canvas { border: 1px solid lightgray; }
+
+main {
+    max-width: 70ch;
+    padding: 3em 1em;
+    margin: auto;
+    line-height: 1.75;
+    font-size: 1.25em;
+}
+
+main h1 {
+    margin: 0;
+}
+
+.drawing-lib-button {
+    margin-bottom: 0;
+    font-size: 0.5em;
+}
