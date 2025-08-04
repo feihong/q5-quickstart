@@ -1,7 +1,11 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/bun'
+import { jsxRenderer } from 'hono/jsx-renderer'
 
 const app = new Hono()
+
+// Add this middleware so that <!DOCTYPE html> appears at the top of each page
+app.get('*', jsxRenderer(({ children }) => children))
 
 app.use('/static/*', serveStatic({ root: './' }))
 app.use('/examples/*', serveStatic({ root: './' }))
@@ -26,7 +30,7 @@ const examples = [
 ]
 
 app.get('/', async (c) => {
-  return c.html(
+  return c.render(
     <html>
       <meta>
         <title>q5.js Quickstart</title>
@@ -53,9 +57,9 @@ app.get('/e/:path', async (c) => {
 
   const results = examples.filter(e => e.path === c.req.param('path'))
   const e = results[0] || { path: '', title: 'Not found' }
-  const deps = (e.deps || 'p5').split(' ').map(d => dependencyMap[d] || '')
+  const deps = e.deps?.split(' ')?.map(d => dependencyMap[d]) || []
 
-  return c.html(
+  return c.render(
     <html>
       <meta>
         <title> {e.title} </title>
