@@ -27,6 +27,11 @@ const examples = [
     path: 'vector',
     title: 'Draw a vector',
   },
+  {
+    path: 'vector-add-sub',
+    title: 'Vector addition and subtraction',
+  },
+
 ]
 
 app.get('/', async (c) => {
