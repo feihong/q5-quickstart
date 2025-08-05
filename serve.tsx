@@ -31,7 +31,10 @@ const examples = [
     path: 'vector-add-sub',
     title: 'Vector addition and subtraction',
   },
-
+  {
+    path: 'vector-mul-div',
+    title: 'Vector multiplication and division',
+  },
 ]
 
 app.get('/', async (c) => {

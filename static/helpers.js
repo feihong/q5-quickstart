@@ -9,19 +9,27 @@ function makeDiv(markdown) {
   return result
 }
 
-function beforeCanvas(markdown) {
+function beforeCanvas(markdown, callback) {
   window.addEventListener('load', () => {
     const canvas = document.querySelector('canvas')
     const parent = canvas.parentNode
     parent.insertBefore(makeDiv(markdown), canvas)
+
+    if (callback) {
+      callback()
+    }
   })
 }
 
-function afterCanvas(markdown) {
+function afterCanvas(markdown, callback) {
   window.addEventListener('load', () => {
     const canvas = document.querySelector('canvas')
     const parent = canvas.parentNode
     parent.insertBefore(makeDiv(markdown), canvas.nextSibling)
+
+    if (callback) {
+      callback()
+    }
   })
 }
 
