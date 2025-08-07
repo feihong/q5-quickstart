@@ -35,6 +35,10 @@ const examples = [
     path: 'vector-mul-div',
     title: 'Vector multiplication and division',
   },
+  {
+    path: 'mover-constant-acceleration',
+    title: 'Mover with constant acceleration',
+  },
 ]
 
 app.get('/', async (c) => {
