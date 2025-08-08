@@ -1,4 +1,4 @@
-beforeCanvas(`
+afterTitle(`
 Show how to draw a vector with an arrow drawn at its head
 `)
 

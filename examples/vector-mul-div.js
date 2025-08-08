@@ -1,7 +1,7 @@
 
 scalar = 2
 
-beforeCanvas(`
+afterTitle(`
 <div class="control-panel" style="width: 640px; display: flex; gap: 0.5em;">
   <input style="flex: 1" type="range" value="2" min="1" max="10" step="0.1">
   <div>-</div>

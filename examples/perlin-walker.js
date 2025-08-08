@@ -1,4 +1,4 @@
-beforeCanvas(`
+afterTitle(`
 p5 version has more natural motion, while q5 version is more "artistic"
 `)
 

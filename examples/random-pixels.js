@@ -1,4 +1,4 @@
-beforeCanvas(`
+afterTitle(`
 <button onclick="update('random')">Totally random</button>
 <button onclick="update('perlinBigOffset')">Perlin big offsets</button>
 <button onclick="update('perlin')">Perlin</button>

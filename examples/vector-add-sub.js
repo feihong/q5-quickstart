@@ -1,6 +1,6 @@
 mode = 'add'
 
-beforeCanvas(`
+afterTitle(`
 <select onchange="mode = event.target.value">
   <option>add</option>
   <option>subtract</option>

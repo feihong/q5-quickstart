@@ -77,6 +77,7 @@ app.get('/e/:path', async (c) => {
         <title> {e.title} </title>
         <link rel="stylesheet" href="/static/styles.css" />
         <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js" />
+        <script src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.5.5.nomodule.min.js"></script>
         <script src="/static/helpers.js" />
         <script src={drawingLib} />
         {deps.map(src => <script src={src} />)}
@@ -85,6 +86,7 @@ app.get('/e/:path', async (c) => {
         <main>
           <button class="drawing-lib-button">-</button>
           <h1> {e.title} </h1>
+          <div class="global-vars-container"></div>
           <script src={`/examples/${e.path}.js`}></script>
         </main>
       </body>

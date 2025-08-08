@@ -3,36 +3,19 @@ const md = markdownit({
   linkify: true,
 })
 
-function makeDiv(markdown) {
-  const result = document.createElement('div')
-  result.innerHTML = md.render(markdown)
-  return result
-}
-
-function beforeCanvas(markdown, callback) {
+function afterTitle(markdown) {
   window.addEventListener('load', () => {
-    const canvas = document.querySelector('canvas')
-    const parent = canvas.parentNode
-    parent.insertBefore(makeDiv(markdown), canvas)
-
-    if (callback) {
-      callback()
-    }
+    document.querySelector('h1').insertAdjacentHTML('afterend', md.render(markdown))
   })
 }
 
-function afterCanvas(markdown, callback) {
+function afterCanvas(markdown) {
   window.addEventListener('load', () => {
-    const canvas = document.querySelector('canvas')
-    const parent = canvas.parentNode
-    parent.insertBefore(makeDiv(markdown), canvas.nextSibling)
-
-    if (callback) {
-      callback()
-    }
+    document.querySelector('canvas').insertAdjacentHTML('afterend', md.render(markdown))
   })
 }
 
+// Set up drawing library button
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(document.location.search)
   const drawingLibBtn = document.querySelector('button.drawing-lib-button')
