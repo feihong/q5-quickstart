@@ -18,3 +18,11 @@ main h1 {
     margin-bottom: 0;
     font-size: 0.5em;
 }
+
+#global-vars-container {
+    margin-bottom: 1em;
+}
+
+input[type="radio"], label {
+    cursor: pointer;
+}

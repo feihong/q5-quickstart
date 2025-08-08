@@ -1,11 +1,12 @@
-afterTitle(`
-<button onclick="update('random')">Totally random</button>
-<button onclick="update('perlinBigOffset')">Perlin big offsets</button>
-<button onclick="update('perlin')">Perlin</button>
-`)
-
-
-mode = 'random'
+globalVars.add('mode', 'radio', {
+  label: 'Mode',
+  callback: () => redraw(),
+  choices: [
+    { label: 'Totally random', value: 'random' },
+    { label: 'Perlin big offset', value: 'perlinBigOffset' },
+    { label: 'Perlin', value: 'perlin' }
+  ],
+})
 
 function totallyRandom() {
   loadPixels()
@@ -16,9 +17,9 @@ function totallyRandom() {
       const bright = random(255)
 
       pixels[i] = bright
-      pixels[i+1] = bright
-      pixels[i+2] = bright
-      pixels[i+3] = 255
+      pixels[i + 1] = bright
+      pixels[i + 2] = bright
+      pixels[i + 3] = 255
     }
   }
   updatePixels()
@@ -35,9 +36,9 @@ function perlinBigOffset() {
       const bright = map(noise(x, y), 0, 1, 0, 255)
 
       pixels[i] = bright
-      pixels[i+1] = bright
-      pixels[i+2] = bright
-      pixels[i+3] = 255
+      pixels[i + 1] = bright
+      pixels[i + 2] = bright
+      pixels[i + 3] = 255
     }
   }
   updatePixels()
@@ -52,8 +53,8 @@ function perlin() {
       const bright = map(noise(xoff, yoff), 0, 1, 0, 255)
 
       pixels[i] = bright
-      pixels[i+1] = bright
-      pixels[i+2] = bright
+      pixels[i + 1] = bright
+      pixels[i + 2] = bright
       pixels[i + 3] = 255
     }
   }
@@ -80,9 +81,4 @@ function draw() {
       perlin()
       break
   }
-}
-
-function update(newMode) {
-  mode = newMode
-  redraw()
 }
