@@ -22,13 +22,13 @@ drawingLibBtn.onclick = () => document.location.search = `?q5=${!isQ5 + 0}`
 
 const { 'sl-radio-group': radioGroup, 'sl-radio': radio, 'sl-range': range } = van.tags
 
-function Radio(name, { label, callback, choices }) {
+function Radio(name, { label, onchange, choices }) {
   const rg = radioGroup({label, name, value: choices[0].value},
     choices.map(choice => radio({value: choice.value}, choice.label))
   )
   rg.addEventListener('sl-change', event => {
     window[name] = event.target.value
-    if (callback) callback(window[name])
+    if (onchange) onchange(window[name])
   })
   return rg
 }

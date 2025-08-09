@@ -39,6 +39,10 @@ const examples = [
     path: 'mover-constant-acceleration',
     title: 'Mover with constant acceleration',
   },
+  {
+    path: 'mover-random-acceleration',
+    title: 'Mover with random acceleration',
+  },
 ]
 
 app.get('/', async (c) => {

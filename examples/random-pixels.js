@@ -1,6 +1,6 @@
 globalVars.add('mode', 'radio', {
   label: 'Mode',
-  callback: () => redraw(),
+  onchange: () => redraw(),
   choices: [
     { label: 'Totally random', value: 'random' },
     { label: 'Perlin big offset', value: 'perlinBigOffset' },
