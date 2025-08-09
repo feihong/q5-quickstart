@@ -12,8 +12,8 @@ class Mover {
     this.reset()
 
     // For perlin noise
-    this.xoff = 10
-    this.yoff = 10001
+    this.magOff = 0
+    this.headingOff = 10000
   }
 
   reset() {
@@ -22,17 +22,19 @@ class Mover {
   }
 
   update() {
-    let xAcc, yAcc
+    let acc
 
     if (mode === 'random') {
-      xAcc = random(-0.2, 0.2)
-      yAcc = random(-0.2, 0.2)
+      acc = p5.Vector.random2D()
+      acc.mult(random(0.5))
     } else if (mode === 'perlin') {
-      xAcc = map(noise(this.xoff += 0.01), 0, 1, -0.2, 0.2)
-      yAcc = map(noise(this.yoff += 0.01), 0, 1, -0.2, 0.2)
+      const mag = map(noise(this.magOff += 0.01), 0, 1, 0, 0.1)
+      const heading = map(noise(this.headingOff += 0.01), 0, 1, 0, 2*PI)
+      acc = createVector(mag, 0)
+      acc.setHeading(heading)
     }
 
-    this.velocity.add(xAcc, yAcc)
+    this.velocity.add(acc)
     this.velocity.limit(15)
     this.pos.add(this.velocity)
 
