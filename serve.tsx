@@ -77,6 +77,8 @@ app.get('/e/:path', async (c) => {
         <title> {e.title} </title>
         <link rel="stylesheet" href="/static/styles.css" />
         <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.5.5.nomodule.min.js" />
         <script src={drawingLib} />
         {deps.map(src => <script src={src} />)}

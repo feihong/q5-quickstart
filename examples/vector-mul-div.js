@@ -1,18 +1,9 @@
-
-scalar = 2
-
-afterTitle(`
-<div class="control-panel" style="width: 640px; display: flex; gap: 0.5em;">
-  <input style="flex: 1" type="range" value="2" min="1" max="10" step="0.1">
-  <div>-</div>
-</div>`, () => {
-  const controlPanel = document.querySelector('div.control-panel')
-  controlPanel.querySelector('div').textContent = scalar
-
-  controlPanel.querySelector('input').oninput = (event) => {
-    scalar = parseFloat(event.target.value)
-    controlPanel.querySelector('div').textContent = scalar
-  }
+globalVars.add('scalar', 'slider', {
+  label: 'Scalar',
+  value: 2,
+  min: 1,
+  max: 20,
+  step: 0.5,
 })
 
 function vector(x1, y1, x2, y2) {

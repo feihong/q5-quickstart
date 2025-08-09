@@ -1,11 +1,11 @@
-mode = 'add'
-
-afterTitle(`
-<select onchange="mode = event.target.value">
-  <option>add</option>
-  <option>subtract</option>
-</select>
-`)
+globalVars.add('mode', 'radio', {
+  label: 'Mode',
+  callback: () => redraw(),
+  choices: [
+    { label: 'Add', value: 'add' },
+    { label: 'Subtract', value: 'subtract' },
+  ],
+})
 
 function vector(x1, y1, x2, y2) {
   const mag = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
