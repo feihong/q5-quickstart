@@ -1,6 +1,24 @@
-xAcc = 0.01
-yAcc = -0.01
-limit = 50
+globalVars.add('xAcc', 'slider', {
+  label: 'Horizontal acceleration',
+  value: 0,
+  min: -1,
+  max: 1,
+  step: 0.001,
+})
+globalVars.add('yAcc', 'slider', {
+  label: 'Vertical acceleration',
+  value: 0,
+  min: -1,
+  max: 1,
+  step: 0.001,
+})
+globalVars.add('vLimit', 'slider', {
+  label: 'Velocity limit',
+  value: 50,
+  min: 0,
+  max: 100,
+  step: 1,
+})
 
 class Mover {
   constructor() {
@@ -9,6 +27,7 @@ class Mover {
   }
 
   update() {
+    this.velocity.limit(vLimit)
     this.velocity.add(xAcc, yAcc)
     this.pos.add(this.velocity)
 
