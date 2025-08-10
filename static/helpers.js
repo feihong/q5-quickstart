@@ -8,7 +8,8 @@ function afterTitle(markdown) {
 }
 
 function afterCanvas(markdown) {
-  document.querySelector('canvas').insertAdjacentHTML('afterend', md.render(markdown))
+  window.addEventListener('load', () =>
+    document.querySelector('canvas').insertAdjacentHTML('afterend', md.render(markdown)))
 }
 
 // Set up drawing library button
@@ -23,8 +24,8 @@ drawingLibBtn.onclick = () => document.location.search = `?q5=${!isQ5 + 0}`
 const { 'sl-radio-group': radioGroup, 'sl-radio': radio, 'sl-range': range } = van.tags
 
 function Radio(name, { label, onchange, choices }) {
-  const rg = radioGroup({label, name, value: choices[0].value},
-    choices.map(choice => radio({value: choice.value}, choice.label))
+  const rg = radioGroup({ label, name, value: choices[0].value },
+    choices.map(choice => radio({ value: choice.value }, choice.label))
   )
   rg.addEventListener('sl-change', event => {
     window[name] = event.target.value

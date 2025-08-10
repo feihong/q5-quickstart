@@ -43,6 +43,10 @@ const examples = [
     path: 'mover-random-acceleration',
     title: 'Mover with random acceleration',
   },
+  {
+    path: 'mover-interactive-motion',
+    title: 'Mover that accelerates toward mouse position',
+  },
 ]
 
 app.get('/', async (c) => {

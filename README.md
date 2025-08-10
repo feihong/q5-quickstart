@@ -6,6 +6,7 @@
 
 ## Todo
 
-- Mover that accelerates toward mouse position, scaled by distance from the mouse.
+- Hot reload when source files change
+- Publish to GitHub Pages.
 
 ## Links
